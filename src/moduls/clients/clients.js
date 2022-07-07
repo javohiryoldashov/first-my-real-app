@@ -11,6 +11,11 @@ module.exports ={
     },
     Clients_Post : async (req, res)=>{
         const {client_name,client_select,client_tel,client_sell} = req.body
+        if(!client_name,!client_select,!client_tel,!client_sell){
+            return res.send({
+                message:'Malumotlar toliq emas!'
+            })
+        }
         try{
             res.json(await Connect.Post_client(client_name,client_select,client_tel,client_sell))
         }catch(error){
